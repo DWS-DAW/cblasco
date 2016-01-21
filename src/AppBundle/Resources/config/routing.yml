@@ -1,0 +1,28 @@
+numero:
+    path: /{number}
+    defaults: { _controller: AppBundle:T43:number }
+    methods: [GET]
+    requirements:
+        number: \d{3}+
+
+texto:
+    path: /{text}
+    defaults: { _controller: AppBundle:T43:text }
+    methods: [GET]
+    requirements:
+        text: \w{3}+
+        
+defecto:
+    path: /page/{page}
+    defaults: { _controller: AppBundle:T43:default, page: 1 }
+    methods: [GET]
+    requirements:
+        page: \d+
+        
+alumnos:
+    path: /alumnos/{year}.{_format}
+    defaults: { _controller: AppBundle:T43:format, _format: html }
+    methods: [GET]
+    requirements:
+        year: \d{4}+
+        _format: html|json

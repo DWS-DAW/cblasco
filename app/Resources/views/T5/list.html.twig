@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+{% endblock %}
+{% block body %}
+<h1>{{ title }}</h1>
+<table><thead><tr><td>Identificador</td><td>Nombre</td><td>Precio</td><td>Descripción</td></tr></thead>
+<tbody>{% for key, value in products %}
+	<tr><td>{{ value.Id }}</td><td>{{ value.Name }}</td><td>{{ value.Price }}</td><td>{{ value.Description }}</td></tr>
+	{% endfor %}</tbody>
+</table>
+{% endblock %}

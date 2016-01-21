@@ -1,0 +1,23 @@
+{% extends 'T6.html.twig' %}
+{% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+{% endblock %}
+{% block body %}
+<h1>{{ title }}</h1>
+<div class='col-sm-6'>
+<table class='table table-striped'><tr><th>Identificador</th><td>{{ person.Id }}</td></tr>
+<tr><th>Nombre</th><td>{{ person.Name }}</td></tr>
+<tr><th>Edad</th><td>{{ person.Age }}</td></tr>
+<tr><th>Fecha de aniversario</th><td>{{ person.BirthDate|date('d/m/y') }}</td></tr>
+<tr><th>Altura</th><td>{{ person.Height }}</td></tr>
+<tr><th>Email</th><td>{{ person.Email }}</td></tr>
+<tr><th>Teléfono</th><td>{{ person.Phone }}</td></tr>
+<tr><th>Sexo</th><td>{{ person.Gender }}</td></tr>
+<tr><th>Num. descendientes</th><td>{{ person.Descends }}</td></tr>
+<tr><th>Vehiculo propio</th><td>{{ person.Vehicle }}</td></tr>
+<tr><th>Lenguaje escogido</th><td>{{ person.PreferredLanguaje }}</td></tr>
+<tr><th>Nivel de inglés</th><td>{{ person.EnglishLevel }}</td></tr>
+<tr><th>Url personal</th><td>{{ person.PersonalWebSite }}</td></tr>
+<tr><th>Num. de la tarjeta de credito/debito</th><td>{{ person.CardNumber }}</td></tr>
+<tr><th>Num. de cuenta Bancaria</th><td>{{ person.IBAN }}</td></tr>
+</table></div>
+{% endblock %}

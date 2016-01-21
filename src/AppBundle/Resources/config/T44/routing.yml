@@ -1,0 +1,4 @@
+estatico:
+    path: /{name}
+    defaults: { _controller: AppBundle:T44:static }
+    methods: [GET]
