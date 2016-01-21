@@ -59,14 +59,11 @@
     },
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
         "symfony-web-dir": "web",
-        "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
-            "env­map": { 
+            "env-­map": { 
 "database_host": "DATABASE_HOST", 
 "database_port": "DATABASE_PORT", 
 "database_name": "DATABASE_NAME", 
@@ -75,7 +72,7 @@
 } 
 }, 
 "heroku" : { 
-"framework": "symfony3" 
+"framework": "symfony2" 
 } 
     }
 }
