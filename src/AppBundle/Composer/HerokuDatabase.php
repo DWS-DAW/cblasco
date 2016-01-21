@@ -23,7 +23,7 @@ class HerokuDatabase
 		}
 
 
-		$io = $event­>getIO();
+		$io = $event-­>getIO();
 		$io­->write("DATABASE_URL=".getenv("DATABASE_URL"));
 	}
 }

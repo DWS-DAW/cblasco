@@ -53,7 +53,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
-        "compile" : [ 
+        "compile": [ 
 			"php app/console doctrine:schema:update --force" 
 		]
     },
@@ -71,7 +71,7 @@
 "database_password": "DATABASE_PASSWORD" 
 } 
 }, 
-"heroku" : { 
+"heroku": { 
 "framework": "symfony2" 
 } 
     }
