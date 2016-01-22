@@ -10,6 +10,11 @@
             "app/AppKernel.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "3.0.*",
@@ -49,7 +54,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "compile": [ 
-			"php app/console doctrine:schema:update --force" 
+			"php bin/console doctrine:schema:update --force" 
 		]
     },
     "extra": {
