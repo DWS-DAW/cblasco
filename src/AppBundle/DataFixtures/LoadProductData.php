@@ -1,5 +1,5 @@
 <?php 
-// src/AppBundle/DataFixtures/ORM/LoadCategoryData.php
+// src/AppBundle/DataFixtures/ORM/LoadProductData.php
 
 namespace AppBundle\DataFixtures\ORM;
 
@@ -7,9 +7,12 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use AppBundle\Entity\Category;
 
-class LoadCategoryData implements FixtureInterface, ContainerAwareInterface
+class LoadProductData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
 	
 	private $container;
@@ -20,18 +23,20 @@ class LoadCategoryData implements FixtureInterface, ContainerAwareInterface
 		$this->container = $container;
 		
 		$symfony_app_base_dir = $this->container->getParameter('kernel.root_dir');
-		
-		$fd = fopen('app/Resources/data/categories.csv', "r");
-		if ($fd) {
-			while (($data = fgetcsv($fd)) !== false) {
-		
-				printf("%s, ",$data[0]);
+	
+		$row=0;
+		if (($fp = fopen("app/Resources/data/products.csv", "r")) !== FALSE) {
+			while (($data = fgetcsv($fp, 1000, ",")) !== FALSE) {
+				$row++;
+				if ($row == 1) continue; //skip header
+				printf("Nombre: %s",$data[0]);
+				printf("Desc: %s",$data[1]);
+				printf("Categoría: %s",$data[2]);
+				printf("Precio: %s",$data[3]);
 			}
-		
-			fclose($fd);
+			fclose($fp);
 		}
-		
-		
+	
 	}
 	public function load(ObjectManager $manager)
 	{
@@ -51,4 +56,10 @@ class LoadCategoryData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($category4); 
         $manager->flush();*/
     } 
+    public function getOrder()
+    {
+    	// the order in which fixtures will be loaded
+    	// the lower the number, the sooner that this fixture is loaded
+    	return 2;
+    }
 } 

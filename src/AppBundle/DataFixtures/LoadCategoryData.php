@@ -7,9 +7,12 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use AppBundle\Entity\Category;
 
-class LoadCategoryData implements FixtureInterface, ContainerAwareInterface
+class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
 	
 	private $container;
@@ -20,21 +23,20 @@ class LoadCategoryData implements FixtureInterface, ContainerAwareInterface
 		$this->container = $container;
 		
 		$symfony_app_base_dir = $this->container->getParameter('kernel.root_dir');
-		
-		$fd = fopen('app/Resources/data/categories.csv', "r");
-		if ($fd) {
-			while (($data = fgetcsv($fd)) !== false) {
-		
-				printf("%s, ",$data[0]);
+		$fd=fopen('app/Resources/data/categories.csv',"r");
+		if($fd){
+			while(($data=fgetcsv($fd))!==false){
+				printf("nombre categoria %s ",$data[0]);
 			}
-		
 			fclose($fd);
 		}
 		
 		
+
 	}
 	public function load(ObjectManager $manager)
 	{
+		
 		
 		/*$category1= new Category();
 		$category1->setName('Carnes');
@@ -51,4 +53,10 @@ class LoadCategoryData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($category4); 
         $manager->flush();*/
     } 
+    public function getOrder()
+    {
+    	// the order in which fixtures will be loaded
+    	// the lower the number, the sooner that this fixture is loaded
+    	return 1;
+    }
 } 

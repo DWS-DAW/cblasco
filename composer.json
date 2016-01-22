@@ -10,11 +10,6 @@
             "app/AppKernel.php"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "3.0.*",
@@ -64,16 +59,16 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
             "env-­map": { 
-"database_host": "DATABASE_HOST", 
-"database_port": "DATABASE_PORT", 
-"database_name": "DATABASE_NAME", 
-"database_user": "DATABASE_USER", 
-"database_password": "DATABASE_PASSWORD" 
-} 
-}, 
-"heroku": { 
-"framework": "symfony2" 
-} 
+				"database_host": "DATABASE_HOST", 
+				"database_port": "DATABASE_PORT", 
+				"database_name": "DATABASE_NAME", 
+				"database_user": "DATABASE_USER", 
+				"database_password": "DATABASE_PASSWORD" 
+			} 
+		}, 
+		"heroku": { 
+			"framework": "symfony2" 
+		} 
     }
 }
 
