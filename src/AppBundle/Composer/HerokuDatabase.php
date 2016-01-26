@@ -4,7 +4,7 @@ namespace AppBundle\Composer;
 
 use Composer\Script\Event;
 
-class HerokuDatabaskljke
+class HerokuDatabase
 {
 	public static function populateEnvironment(Event $event)
 	{
