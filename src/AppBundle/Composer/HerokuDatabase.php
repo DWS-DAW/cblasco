@@ -1,4 +1,5 @@
 <?php
+//src/AppBundle/Composer/HerokuDatabase.php
 
 namespace AppBundle\Composer;
 
@@ -18,10 +19,9 @@ class HerokuDatabase
 			putenv("DATABASE_PASSWORD={$url['pass']}");
 			$db = substr($url['path'],1);
 			putenv("DATABASE_NAME={$db}");
-		}
+		}            
 
-
-		$io = $event-­>getIO();
-		$io­->write("DATABASE_URL=".getenv("DATABASE_URL"));
+		$io = $event->getIO();
+		$io->write("DATABASE_URL=".getenv("DATABASE_URL"));
 	}
 }
