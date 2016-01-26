@@ -14,7 +14,7 @@ class LoadCategoryData implements FixtureInterface, ContainerAwareInterface
 	
 	private $container;
 	
-	public function setContainer(ContainerInterface $container = null)
+	public function setContainer(ContainerInterface $container = null $manager)
 	{
 		
 		$this->container = $container;
@@ -30,11 +30,23 @@ class LoadCategoryData implements FixtureInterface, ContainerAwareInterface
 		
 			fclose($fd);
 		}
-		
-		
+
+		$manager->flush();
 	}
 	public function load(ObjectManager $manager)
 	{
+
+		
+		$symfony_app_base_dir = $this->container->getParameter('kernel.root_dir');
+		$fd = fopen('app/Resources/data/categories.csv', "r");
+		if ($fd) {
+			while (($data = fgetcsv($fd)) !== false) {
+				$manager->persist($data[0]);
+			}
+		
+			fclose($fd);
+		}
+		$manager->flush();
 		
 		/*$category1= new Category();
 		$category1->setName('Carnes');
