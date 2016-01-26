@@ -1,12 +1,10 @@
-
-//src/AppBundle/Composer/HerokuDatabase.php
 <?php
 
 namespace AppBundle\Composer;
 
 use Composer\Script\Event;
 
-class HerokuDatabase
+class HerokuDatabaskljke
 {
 	public static function populateEnvironment(Event $event)
 	{
