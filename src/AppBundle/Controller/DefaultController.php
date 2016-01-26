@@ -9,8 +9,21 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+	
+	
+		/**
+		 * @Route("/admin")
+		 */
+		public function adminAction()
+		{
+			return new Response('<html><body>Admin page!</body></html>');
+		}
+	
+	
+	
+	
     /**
-     * @Route("/", name="homepage")
+     * @Route("/1", name="homepage")
      */
     public function indexAction(Request $request)
     {
