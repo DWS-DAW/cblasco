@@ -4,7 +4,7 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+//use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -15,7 +15,7 @@ use AppBundle\Entity\Category;
 class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
 	
-	/*private $container;
+	private $container;
 	
 	public function setContainer(ContainerInterface $container = null)
 	{
@@ -33,12 +33,12 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
 		
 		
 
-	}*/
-	public function load(ObjectManager $manager)
+	}
+	/*public function load(ObjectManager $manager)
 	{
 		
 		
-		/*$category1= new Category();
+		$category1= new Category();
 		$category1->setName('Carnes');
 	$category2 = new Category();
 		$category2->setName('Pescados');
@@ -51,12 +51,12 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
         $manager->persist($category2); 
         $manager->persist($category3); 
         $manager->persist($category4); 
-        $manager->flush();*/
-    } 
+        $manager->flush();
+    } */
     public function getOrder()
     {
     	// the order in which fixtures will be loaded
     	// the lower the number, the sooner that this fixture is loaded
     	return 1;
-    }
+}
 } 
