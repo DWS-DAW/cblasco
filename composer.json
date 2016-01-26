@@ -59,23 +59,22 @@
     "config" : {
         "bin-dir" : "bin"
     },
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-web-dir": "web",
-        "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml",
-            "env-­map": { 
-				"database_host": "DATABASE_HOST", 
-				"database_port": "DATABASE_PORT", 
-				"database_name": "DATABASE_NAME", 
-				"database_user": "DATABASE_USER", 
-				"database_password": "DATABASE_PASSWORD" 
-			} 
-		}, 
-		"heroku": { 
-			"framework": "symfony2" 
-		} 
+    "extra" : {
+        "symfony-app-dir" : "app",
+        "symfony-web-dir" : "web",
+        "symfony-assets-install" : "relative",
+        "incenteev-parameters" : {
+            "file" : "app/config/parameters.yml",
+            "env-map": {
+                "database_host": "DATABASE_HOST",
+                "database_port": "DATABASE_PORT",
+                "database_name": "DATABASE_NAME",
+                "database_user": "DATABASE_USER",
+                "database_password": "DATABASE_PASSWORD"
+            }
+        },
+        "heroku" : {
+            "framework": "symfony2"
+        }
     }
 }
