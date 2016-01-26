@@ -15,12 +15,12 @@ use AppBundle\Entity\Category;
 class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
 	
-	private $container;
+	/*private $container;
 	
 	public function setContainer(ContainerInterface $container = null)
 	{
 		
-		/*$this->container = $container;
+	    $this->container = $container;
 		
 		$symfony_app_base_dir = $this->container->getParameter('kernel.root_dir');
 		$fd=fopen('app/Resources/data/categories.csv',"r");
@@ -29,11 +29,11 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
 				printf("nombre categoria %s ",$data[0]);
 			}
 			fclose($fd);
-		}*/
+		}
 		
 		
 
-	}
+	}*/
 	public function load(ObjectManager $manager)
 	{
 		
