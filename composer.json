@@ -56,6 +56,9 @@
 			"php bin/console doctrine:schema:update --force" 
 		]
     },
+    "config" : {
+        "bin-dir" : "bin"
+    },
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
