@@ -13,7 +13,7 @@ security:
         #            peret:
         #                password: peret1
         #                roles: 'ROLE_USER'
-                    admin:
+                    admin1:
                         password: $2a$04$lBhy6jtyYkQvTd38wwWa2Or5hWJGzpEJZF9YcES9KhgqrDzQxiu2K
                         roles: 'ROLE_ADMIN'
         fos_userbundle:
