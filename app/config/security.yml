@@ -4,24 +4,24 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: 
-                users:
+        #in_memory:
+        #    memory: 
+        #        users:
         #            ryan:
         #                password: ryan
         #                roles: 'ROLE_USER'
         #            peret:
         #                password: peret1
         #                roles: 'ROLE_USER'
-                    admin:
-                        password: admin
-                        roles: 'ROLE_ADMIN'
+        #            admin:
+        #                password: admin1
+        #                roles: 'ROLE_ADMIN'
         fos_userbundle:
             id: fos_user.user_provider.username_email
 
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
-        Symfony\Component\Security\Core\User\User: plaintext
+        #Symfony\Component\Security\Core\User\User: plaintext
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
