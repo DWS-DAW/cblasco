@@ -7,7 +7,7 @@
 
 {% for category in categories %}
 <h3>{{ category.Name }}</h3>
-<table class='table table-striped'><thead><tr><td>Identificador</td><td>Nombre</td><td>Precio</td><td>Descripción</td><td>borrar</td></tr></thead>
+<table class='table table-striped'><thead><tr><td>{{ 'identificador' | trans }}</td><td>{{ 'nombre' | trans }}</td><td>Precio</td><td>{{ 'descripcion' | trans }}</td><td>{{ 'borrar' | trans }}</td></tr></thead>
 
 <tbody>
 {% for product in category.products %}

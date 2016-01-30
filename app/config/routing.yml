@@ -1,7 +1,9 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-    
+    prefix : /{_locale}/
+    requirements:
+        _locale: es|en
 T43:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix: /T43
@@ -12,8 +14,12 @@ T44:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix : /{_locale}/
+    requirements:
+        _locale: es|en
+
 contact:
-    path:     /{_locale}/product/list
+    path:     /{_locale}/product/list/jjjjjjj
     defaults: { _controller: AppBundle:Product:list }
     requirements:
         _locale: es|en

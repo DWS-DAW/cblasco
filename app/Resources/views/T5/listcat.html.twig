@@ -10,8 +10,8 @@
 <tbody>{% for key, value in categories %}
 	<tr><td>{{ value.Id }}</td><td>{{ value.Name }}</td>
 	{% if is_granted('ROLE_ADMIN') %}
-<td><a href='/category/delete/{{ value.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
-<td><a href='/category/edit/{{ value.id }}'><i class='fa fa-pencil fa-lg'></i></a></td>
+<td><a href='/{{ app.request.locale }}/category/delete/{{ value.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
+<td><a href='/{{ app.request.locale }}/category/edit/{{ value.id }}'><i class='fa fa-pencil fa-lg'></i></a></td>
 {% endif %}</tr>
 	{% endfor %}</tbody>
 </table>

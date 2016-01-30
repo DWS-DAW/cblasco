@@ -18,31 +18,31 @@
             
             <div id="navbar" class="navbar-collapse navbar-left collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/"><span
+                    <li><a href="/{{ app.request.locale }}"><span
                             class="glyphicon glyphicon-home" aria-hidden="true"></span>{{ 'inicio' | trans }}</a></li>
                     
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">{{ 'productos' | trans }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/product/new">{{ 'agregarprod' | trans }}</a></li>
-                            <li><a href="/product/list">{{ 'list' | trans }}</a></li>
+                            <li><a href="/{{ app.request.locale }}/product/new">{{ 'agregarprod' | trans }}</a></li>
+                            <li><a href="/{{ app.request.locale }}/product/list">{{ 'list' | trans }}</a></li>
                             
                         </ul></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">{{ 'categorias' | trans }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/category/new">{{ 'agregarcat' | trans }}</a></li>
-                            <li><a href="/category/list">{{ 'list' | trans }}</a></li>
+                            <li><a href="/{{ app.request.locale }}/category/new">{{ 'agregarcat' | trans }}</a></li>
+                            <li><a href="/{{ app.request.locale }}/category/list">{{ 'list' | trans }}</a></li>
                             
                         </ul></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">{{ 'personas' | trans }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/person/new">{{ 'agregarpers' | trans }}</a></li>
-                            <li><a href="/person/list">{{ 'list' | trans }}</a></li>
+                            <li><a href="/{{ app.request.locale }}/person/new">{{ 'agregarpers' | trans }}</a></li>
+                            <li><a href="/{{ app.request.locale }}/person/list">{{ 'list' | trans }}</a></li>
                             
                         </ul></li>
                 </ul>
@@ -66,15 +66,15 @@
                     <div class="form-group form-group-sm">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
                         <button type="submit" class="btn btn-info"><strong>{{ 'entrar' | trans }}</strong></button>
-                        <a type="button" href="/register" class="btn btn-info"><strong>{{ 'registrarse' | trans }}</strong></a>  
+                        <a type="button" href="/{{ app.request.locale }}/register" class="btn btn-info"><strong>{{ 'registrarse' | trans }}</strong></a>  
                         <ul class="nav navbar-nav navbar-right">                    
                 <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-flag"></span> es <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">es</a></li>                          
-                            <li><a href="#">en</a></li>
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'es'})) }}">es</a></li>                          
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">en</a></li>
                         </ul>
                     </li> 
                 </ul>

@@ -8,8 +8,8 @@
 <tbody>{% for key, value in products %}
 	<tr><td>{{ value.Id }}</td><td>{{ value.Name }}</td><td>{{ value.Price }}</td><td>{{ value.Description }}</td>
 	{% if is_granted('ROLE_ADMIN') %}
-<td><a href='/product/delete/{{ value.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
-<td><a href='/product/edit/{{ value.id }}'><i class='fa fa-pencil fa-lg'></i></a></td>
+<td><a href='/{{ app.request.locale }}/product/delete/{{ value.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
+<td><a href='/{{ app.request.locale }}/product/edit/{{ value.id }}'><i class='fa fa-pencil fa-lg'></i></a></td>
 {% endif %}</tr>
 	{% endfor %}</tbody>
 </table>
