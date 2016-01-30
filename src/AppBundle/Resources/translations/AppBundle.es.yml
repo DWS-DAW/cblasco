@@ -1,0 +1,92 @@
+productos:
+        'Productos'
+producto:
+        'Producto'
+agregarprod:
+        'Agregar Producto'
+categorias:
+        'Categorias'
+agregarcat:
+        'Agregar Categoria'
+personas:
+        'Personas'
+agregarpers:
+        'Agregar Persona'
+list:
+        'Ver Listado'
+nombre:
+        'Nombre'
+precio:
+        'Precio'
+descripcion:
+        'Descripcion'
+borrar:
+        'Borrar'
+editar:
+        'Editar'
+entrar:
+        'Entrar'
+registrarse:
+        'Registrarse'
+nomUs:
+        'Nombre de Usuario'
+clave:
+        'Contraseña'
+title:
+    error:
+        'Error'
+    list:
+        prod:
+            'Listado de productos'
+        cat:
+            'Listado de categorias'
+        pers:
+            'Listado de Personas'
+        forcat:
+            'Listado de productos de la categoria '
+        prodcat:
+            'Listado de todos los productos ordenados por categorias'
+detalles:
+        'Detalles'
+nombre:
+        'Nombre'
+email:
+        'Email'
+tel:
+        'Teléfono'
+ver:
+        'Ver'
+id:
+        'Identificador'
+edad:
+        'Edad'
+nac:
+        'Fecha de nacimiento'
+altura:
+        'Altura'
+sexo:
+        'Sexo'
+desc:
+        'Numero de descendientes'
+vehiculo:
+        'Vehículo propio?'
+lenguaje:
+        'Lenguaje'
+ningles:
+        'Nivel de Ingles'
+urlpersonal:
+        'Url Personal'
+debitoCredito:
+        'Targeta de debito Credito'
+ncuenta:
+        'Numero IBAN cuenta bancaria'
+save:
+        'Guardar'
+saveAdd:
+        'Guardar y continuar'
+categoria:
+        'Categoria'
+inicio:
+        'Inicio'
+identificador:
+        'identificador'

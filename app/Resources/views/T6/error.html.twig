@@ -3,9 +3,5 @@
 {% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
 {% endblock %}
 {% block body %}
-<h1>{{ title }}</h1>
-<ul>{% for key, value in products %}
-	<li> {{ product.id }}</li>
-	{% endfor %}
-</ul>
+<h1>{{ 'title.error' | trans }}</h1>
 {% endblock %}

@@ -9,3 +9,11 @@ T43:
 T44:
     resource: "@AppBundle/Resources/config/T44/routing.yml"
     prefix: /T44
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+contact:
+    path:     /{_locale}/product/list
+    defaults: { _controller: AppBundle:Product:new }
+    requirements:
+        _locale: es|en

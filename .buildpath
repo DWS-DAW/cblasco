@@ -22,6 +22,7 @@
 	<buildpathentry excluding="Resources/stubs/" kind="src" path="vendor/symfony/polyfill-php70"/>
 	<buildpathentry kind="src" path="vendor/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs"/>
 	<buildpathentry kind="src" path="vendor/psr/log"/>
+	<buildpathentry kind="src" path="vendor/friendsofsymfony/user-bundle"/>
 	<buildpathentry kind="src" path="vendor/paragonie/random_compat/lib"/>
 	<buildpathentry kind="src" path="vendor/symfony/symfony/src/Symfony/Bridge/ProxyManager"/>
 	<buildpathentry kind="src" path="vendor/symfony/polyfill-intl-icu"/>
@@ -40,6 +41,7 @@
 	<buildpathentry kind="src" path="app"/>
 	<buildpathentry kind="src" path="vendor/sensiolabs/security-checker"/>
 	<buildpathentry kind="src" path="vendor/doctrine/instantiator/src/Doctrine/Instantiator"/>
+	<buildpathentry kind="src" path="vendor/ircmaxell/password-compat/lib"/>
 	<buildpathentry kind="src" path="vendor/doctrine/doctrine-cache-bundle"/>
 	<buildpathentry kind="src" path="vendor/symfony/polyfill-php70/Resources/stubs"/>
 	<buildpathentry kind="src" path="vendor/doctrine/data-fixtures/lib"/>

@@ -26,29 +26,28 @@ class PersonController extends Controller {
 	 * @Route("/person/new", name="personNew")
 	 */
 	public function newPersonAction(Request $request) {
+		//try{
+		//$this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'No pots crear productes com a usuari!');
 		$person = new Person();
-		
-
-		
-		$form=$this->createFormBuilder($person)
-		->add('name',TextType::class,array('label'=>'Nombre'))
-		->add('age',TextType::class,array('label'=>'Edad','required'=>false))
-		->add('birthDate',DateType::class, array('years'=>range(1935,2000),'label'=>'Fecha de Nacimiento'))
-		->add('height',TextType::class,array('label'=>'Altura','required'=>false))
-		->add('email',TextType::class,array('label'=>'Correo elecronico'))
-		->add('phone',TextType::class,array('label'=>'Teléfono'))
+		$form=$this->createFormBuilder($person, ['translation_domain' => 'AppBundle'])
+		->add('name',TextType::class,array('label'=>'nombre'))
+		->add('age',TextType::class,array('label'=>'edad','required'=>false))
+		->add('birthDate',DateType::class, array('years'=>range(1935,2000),'label'=>'nac'))
+		->add('height',TextType::class,array('label'=>'altura','required'=>false))
+		->add('email',TextType::class,array('label'=>'email'))
+		->add('phone',TextType::class,array('label'=>'tel'))
 		->add('gender',ChoiceType::class,array('choices'=>
 				array('Male'=> 'm','Female'=>'f'),'label'=>'Sexo'))
-		->add('descends',NumberType::class,array('label'=>'Número de descendientes','required'=>false))
+		->add('descends',NumberType::class,array('label'=>'desc','required'=>false))
 		->add('vehicle',CheckboxType::class,array(
-				'label'    => 'Vehículo propio?',
+				'label'    => 'vehiculo',
 				'required' => false))
-		->add('preferredLanguaje',LanguageType::class,array('label'=>'Idioma'))
+		->add('preferredLanguaje',LanguageType::class,array('label'=>'lenguaje'))
 		->add('englishLevel',ChoiceType::class,array('choices'=>
-				array('1'=> 1,'2'=> 2,'3'=>3),'label'=>'Nivel de ingles (no me funciona como radio)'))
+				array('1'=> 1,'2'=> 2,'3'=>3),'label'=>'ningles'))
 				
-		->add('personalWebSite',TextType::class,array('label'=>'Web personal','required'=>false))
-		->add('cardNumber',TextType::class,array('label'=>'Número de la targeta de crédito','required'=>false))
+		->add('personalWebSite',TextType::class,array('label'=>'urlpersonal','required'=>false))
+		->add('cardNumber',TextType::class,array('label'=>'creditoDebito','required'=>false))
 		->add('IBAN',TextType::class,array(
 				'label'    => 'Número de cuenta bancaria internacional','required'=>false))
 		->add('Enviar',SubmitType::class,array('label'=>'Enviar'))
@@ -66,6 +65,11 @@ class PersonController extends Controller {
 		return $this->render('T6/new.html.twig',array(
 				'form'=>$form->createView(),'title'=>$title
 		));
+		/*}
+		catch(\Exception $AccessDeniedHttpException){
+			$title="No tienes acceso a esta ruta";
+			return $this->render('T6/error.html.twig',array('title'=>$title));
+		}*/
 		}
 	
 	/**
@@ -92,7 +96,7 @@ class PersonController extends Controller {
 		$title = "Listado de la gente";
 		
 		return $this->render ( 'T6/personList.html.twig', Array (
-				"title" => $title,
+				"title.list.pers" => $title,
 				"persons" => $persons
 		) );
 	}

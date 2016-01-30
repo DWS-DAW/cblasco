@@ -4,19 +4,44 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        #in_memory:
+        #    memory: 
+        #        users:
+        #            ryan:
+        #                password: ryan
+        #                roles: 'ROLE_USER'
+        #            peret:
+        #                password: peret1
+        #                roles: 'ROLE_USER'
+        #            admin:
+        #                password: admin1
+        #                roles: 'ROLE_ADMIN'
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+        #Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-    access_control:
-            # require ROLE_ADMIN for /admin*
-            - { path: ^/admin, roles: ROLE_ADMIN }
+        #dev:
+        #    pattern: ^/(_(profiler|wdt)|css|images|js)/
+        #    security: false
+        #my_secured_area:
+        #    anonymous: ~
+        #    http_basic: ~
         main:
-            anonymous: ~
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager               
+
+            logout:       true
+            anonymous:    true
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -24,3 +49,21 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+       
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/product/list, roles: ROLE_USER }
+        - { path: ^/product/new, roles: ROLE_USER }
+        - { path: ^/product/edit, roles: ROLE_ADMIN }
+        - { path: ^/product/delete, roles: ROLE_ADMIN }
+        - { path: ^/category/list, roles: ROLE_USER }
+        - { path: ^/category/new, roles: ROLE_USER }
+        - { path: ^/category/edit, roles: ROLE_ADMIN }
+        - { path: ^/category/delete, roles: ROLE_ADMIN }
+        - { path: ^/person/new, roles: ROLE_USER }
+        - { path: ^/person/edit, roles: ROLE_ADMIN }
+        - { path: ^/person/list, roles: ROLE_USER }
+        - { path: ^/person/delete, roles: ROLE_ADMIN }

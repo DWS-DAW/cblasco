@@ -1,11 +1,16 @@
 {% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 {% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
 {% endblock %}
 {% block body %}
-<h1>{{ title }}</h1>
-<table><thead><tr><td>Identificador</td><td>Nombre</td><td>Precio</td><td>Descripción</td></tr></thead>
+<h1>{{ 'title.list.prod' | trans }}</h1>
+<table class='table table-striped'><thead><tr><td>{{ 'productos' | trans }}</td><td>{{ 'nombre' | trans }}</td><td>{{ 'precio' | trans }}</td><td>{{ 'descripcion' | trans }}</td>{% if is_granted('ROLE_ADMIN') %}<td>{{ 'borrar' | trans }}</td><td>{{ 'editar' | trans }}</td>{% endif %}</tr></thead>
 <tbody>{% for key, value in products %}
-	<tr><td>{{ value.Id }}</td><td>{{ value.Name }}</td><td>{{ value.Price }}</td><td>{{ value.Description }}</td></tr>
+	<tr><td>{{ value.Id }}</td><td>{{ value.Name }}</td><td>{{ value.Price }}</td><td>{{ value.Description }}</td>
+	{% if is_granted('ROLE_ADMIN') %}
+<td><a href='/product/delete/{{ value.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
+<td><a href='/product/edit/{{ value.id }}'><i class='fa fa-pencil fa-lg'></i></a></td>
+{% endif %}</tr>
 	{% endfor %}</tbody>
 </table>
 {% endblock %}

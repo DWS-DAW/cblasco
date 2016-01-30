@@ -1,15 +1,16 @@
 {% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 {% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
 {% endblock %}
 {% block body %}
-<h1>{{ title }}</h1>
-<table class='table table-striped'><tr><td>Detalles</td><td>Id</td><td>Nombre</td><td>Email</td><td>Teléfono</td>
-<td>Borrar</td></tr></thead>
+<h1>{{ 'title.list.pers' | trans }}</h1>
+<table class='table table-striped'><tr><td>{{ 'detalles' | trans }}</td><td>Id</td><td>{{ 'nombre' | trans }}</td><td>{{ 'email' | trans }}</td><td>{{ 'tel' | trans }}</td>
+{% if is_granted('ROLE_ADMIN') %}<td>Borrar</td>{% endif %}</tr></thead>
 <tbody>{% for person in persons %}
-	<tr><td><a href='/person/show/{{ person.id }}'>Ver</a></td>
+	<tr><td><a href='/person/show/{{ person.id }}'>{{ 'ver' | trans }}</a></td>
 	<td>{{ person.Id }}</td><td>{{ person.Name }}</td><td>{{ person.Email }}</td>
-	<td>{{ person.Phone }}</td>
-	<td><a href='/person/delete/{{ person.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
+	<td>{{ person.Phone }}</td>{% if is_granted('ROLE_ADMIN') %}
+	<td><a href='/person/delete/{{ person.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>{% endif %}
 	</tr>
 	{% endfor %}</tbody>
 </table>

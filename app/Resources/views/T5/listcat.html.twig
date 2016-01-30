@@ -1,11 +1,18 @@
 {% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 {% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
 {% endblock %}
 {% block body %}
-<h1>{{ title }}</h1>
-<table><thead><tr><td>Identificador</td><td>Nombre</td></tr></thead>
+<h1>{{ 'title.list.cat' | trans }}</h1>
+<table class='table table-striped'><thead><tr><td>Identificador</td><td>Nombre</td>
+{% if is_granted('ROLE_ADMIN') %}<td>Borrar</td><td>Editar</td>{% endif %}
+</tr></thead>
 <tbody>{% for key, value in categories %}
-	<tr><td>{{ value.Id }}</td><td>{{ value.Name }}</td></tr>
+	<tr><td>{{ value.Id }}</td><td>{{ value.Name }}</td>
+	{% if is_granted('ROLE_ADMIN') %}
+<td><a href='/category/delete/{{ value.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
+<td><a href='/category/edit/{{ value.id }}'><i class='fa fa-pencil fa-lg'></i></a></td>
+{% endif %}</tr>
 	{% endfor %}</tbody>
 </table>
 {% endblock %}
