@@ -1,25 +1,25 @@
 {% trans_default_domain 'AppBundle' %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
-<link href="T6/styles.css" rel="stylesheet">
-    </head>
-    <body>
-    
-   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
+    <link href="T6/styles.css" rel="stylesheet">
+</head>
+<body>
 
-            
-            <div id="navbar" class="navbar-collapse navbar-left collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/{{ app.request.locale }}"><span
-                            class="glyphicon glyphicon-home" aria-hidden="true"></span>{{ 'inicio' | trans }}</a></li>
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+
+
+        <div id="navbar" class="navbar-collapse navbar-left collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/{{ app.request.locale }}"><span
+                    class="glyphicon glyphicon-home" aria-hidden="true"></span> {{ 'inicio' | trans }}</a></li>
                     
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -29,79 +29,82 @@
                             <li><a href="/{{ app.request.locale }}/product/list">{{ 'list' | trans }}</a></li>
                             
                         </ul></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">{{ 'categorias' | trans }} <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/{{ app.request.locale }}/category/new">{{ 'agregarcat' | trans }}</a></li>
-                            <li><a href="/{{ app.request.locale }}/category/list">{{ 'list' | trans }}</a></li>
-                            
-                        </ul></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">{{ 'personas' | trans }} <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/{{ app.request.locale }}/person/new">{{ 'agregarpers' | trans }}</a></li>
-                            <li><a href="/{{ app.request.locale }}/person/list">{{ 'list' | trans }}</a></li>
-                            
-                        </ul></li>
-                </ul>
-            </div>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right form-inline" action="{{ path("fos_user_security_check") }}" method="post">
-                    <div class="form-group form-group-sm">
-                        <input type="text" class="form-control" name="_username" placeholder="{{ 'nomUs' | trans }}">
-                    </div>
-                    <div class="form-group form-group-sm">
-                        <input type="password" class="form-control" name="_password" placeholder="{{ 'clave' | trans }}">
-                    </div>                    
-                    <div class="form-group form-group-sm">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
-                        <button type="submit" class="btn btn-info"><strong>{{ 'entrar' | trans }}</strong></button>
-                        <a type="button" href="/{{ app.request.locale }}/register" class="btn btn-info"><strong>{{ 'registrarse' | trans }}</strong></a>  
-                        <ul class="nav navbar-nav navbar-right">                    
-                <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                        role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon-flag"></span> es <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'es'})) }}">es</a></li>                          
-                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">en</a></li>
-                        </ul>
-                    </li> 
-                </ul>
-                    </div>
-                </form>
-            </div>
-            <!--<form class="navbar-form navbar-right col-xs-10 col-sm-3" role="signin">
-                <div class="form-group">
-                    <input type="email" class="form-control" id="emailid"
-                        name="emailid" placeholder="Email"> <input type="password"
-                        class="form-control" id="pwd" name="pwd" placeholder="Pasword">
-                    <div class="checkbox">
-                        <label class="checkbox-inline"> <input type="checkbox"
-                            name="remember" value=""> <strong class="blc">Recordar contraseña</strong>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Registrate</button>
-            </form>
--->
+                        <li class="dropdown"><a href="#" class="dropdown-toggle"
+                            data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">{{ 'categorias' | trans }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/{{ app.request.locale }}/category/new">{{ 'agregarcat' | trans }}</a></li>
+                                <li><a href="/{{ app.request.locale }}/category/list">{{ 'list' | trans }}</a></li>
+
+                            </ul></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false">{{ 'personas' | trans }} <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/{{ app.request.locale }}/person/new">{{ 'agregarpers' | trans }}</a></li>
+                                    <li><a href="/{{ app.request.locale }}/person/list">{{ 'list' | trans }}</a></li>
+
+                                </ul></li>
+                            </ul>
+                        </div>
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right form-inline" action="{{ path("fos_user_security_check") }}" method="post">
+                                <div class="form-group form-group-sm">
+                                    <input type="text" class="form-control" name="_username" placeholder="{{ 'nomUs' | trans }}">
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <input type="password" class="form-control" name="_password" placeholder="{{ 'clave' | trans }}">
+                                </div>                    
+                                <div class="form-group form-group-sm">
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                                    <button type="submit" class="btn btn-info"><strong>{{ 'entrar' | trans }}</strong></button>
+                                    <a type="button" href="{{  path('fos_user_registration_register') }}" class="btn btn-info"><strong>{{ 'registrarse' | trans }}</strong></a>
+                                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                    <div class="dropdown"><a href="#" class="dropdown-toggle"
+                                        data-toggle="dropdown" role="button" aria-haspopup="true"
+                                        aria-expanded="false">{{ app.user.username }}<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'editar' | trans }}</a></li>
+                                            <li><a href="{{ path('fos_user_change_password') }}">{{ 'modificar pasword' | trans }}</a></li>
+                                            <li><a href="{{ path('fos_user_security_logout') }}">{{ 'salir' | trans }}</a></li>
+
+                                        </ul></div>
+
+                                        {% else %}
+                                        {% endif %}
 
 
-        </div>
-    </nav>
-    <div style="padding-top:100px;"><h2></h2></div>
-    {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    </body>
-</html>
+                                        <ul class="nav navbar-nav navbar-right">                    
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                role="button" aria-haspopup="true" aria-expanded="false">
+                                                <span class="glyphicon glyphicon-flag"></span> es <span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'es'})) }}">es</a></li>                          
+                                                    <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">en</a></li>
+                                                </ul>
+                                            </li> 
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </nav>
+                    <div style="padding-top:100px;">
+                        {% block body %}{% endblock %}
+                    </div>
+                    {% block javascripts %}{% endblock %}
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+                </body>
+                </html>
