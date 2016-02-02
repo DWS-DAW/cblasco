@@ -59,28 +59,18 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
        
     access_control:
-        - { path: ^/[a-z]+/product/new, roles: [ROLE_ADMIN,ROLE_USER] }
-        - { path: ^/[a-z]+/product/list, roles: [ROLE_ADMIN,ROLE_USER] }
-        - { path: ^/[a-z]+/category/new, roles: [ROLE_ADMIN,ROLE_USER] }
-        - { path: ^/[a-z]+/category/list, roles: [ROLE_ADMIN,ROLE_USER] }
-        - { path: ^/[a-z]+/person/new, roles: [ROLE_ADMIN,ROLE_USER] }
-        - { path: ^/[a-z]+/person/list, roles: [ROLE_ADMIN,ROLE_USER] }
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/product/list, roles: ROLE_USER }
-        - { path: ^/product/new, roles: ROLE_USER }
-        - { path: ^/product/edit, roles: ROLE_ADMIN }
-        - { path: ^/product/delete, roles: ROLE_ADMIN }
-        - { path: ^/category/list, roles: ROLE_USER }
-        - { path: ^/category/new, roles: ROLE_USER }
-        - { path: ^/category/edit, roles: ROLE_ADMIN }
-        - { path: ^/category/delete, roles: ROLE_ADMIN }
-        - { path: ^/person/new, roles: ROLE_USER }
-        - { path: ^/person/edit, roles: ROLE_ADMIN }
-        - { path: ^/person/list, roles: ROLE_USER }
-        - { path: ^/person/delete, roles: ROLE_ADMIN }
-        #- { path: ^/[a-z]+/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        #- { path: ^/[a-z]+/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        #- { path: ^/[a-z]+/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/[a-z]+/product/new, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/product/list, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/category/new, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/category/list, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/person/new, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/person/list, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/[a-z]+/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/[a-z]+/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/[a-z]+/product/edit, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/product/delete, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/category/edit, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/category/delete, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/person/edit, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/person/delete, roles: ROLE_ADMIN }

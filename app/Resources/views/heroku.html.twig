@@ -12,7 +12,7 @@
 </head>
 <body>
 
- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
 
 
@@ -25,24 +25,24 @@
                         data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">{{ 'productos' | trans }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/{{ app.request.locale }}/product/new">{{ 'agregarprod' | trans }}</a></li>
-                            <li><a href="/{{ app.request.locale }}/product/list">{{ 'list' | trans }}</a></li>
+                            <li><a href="{{ path('productNew') }}">{{ 'agregarprod' | trans }}</a></li>
+                            <li><a href="{{ path('productList') }}">{{ 'list' | trans }}</a></li>
                             
                         </ul></li>
                         <li class="dropdown"><a href="#" class="dropdown-toggle"
                             data-toggle="dropdown" role="button" aria-haspopup="true"
                             aria-expanded="false">{{ 'categorias' | trans }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/{{ app.request.locale }}/category/new">{{ 'agregarcat' | trans }}</a></li>
-                                <li><a href="/{{ app.request.locale }}/category/list">{{ 'list' | trans }}</a></li>
+                                <li><a href="{{ path('Categoria_nueva') }}">{{ 'agregarcat' | trans }}</a></li>
+                                <li><a href="{{ path('categoryList') }}">{{ 'list' | trans }}</a></li>
 
                             </ul></li>
                             <li class="dropdown"><a href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">{{ 'personas' | trans }} <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/{{ app.request.locale }}/person/new">{{ 'agregarpers' | trans }}</a></li>
-                                    <li><a href="/{{ app.request.locale }}/person/list">{{ 'list' | trans }}</a></li>
+                                    <li><a href="{{ path('personNew') }}">{{ 'agregarpers' | trans }}</a></li>
+                                    <li><a href="{{ path('personList') }}">{{ 'list' | trans }}</a></li>
 
                                 </ul></li>
                             </ul>
@@ -57,36 +57,36 @@
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <form class="navbar-form navbar-right form-inline" action="{{ path("fos_user_security_check") }}" method="post">
-                                <div class="form-group form-group-sm">
-                                    <input type="text" class="form-control" name="_username" placeholder="{{ 'nomUs' | trans }}">
-                                </div>
-                                <div class="form-group form-group-sm">
-                                    <input type="password" class="form-control" name="_password" placeholder="{{ 'clave' | trans }}">
-                                </div>                    
-                                <div class="form-group form-group-sm">
-                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                                    <button type="submit" class="btn btn-info"><strong>{{ 'entrar' | trans }}</strong></button>
-                                    <a type="button" href="{{  path('fos_user_registration_register') }}" class="btn btn-info"><strong>{{ 'registrarse' | trans }}</strong></a>
-                                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                                    <div class="dropdown"><a href="#" class="dropdown-toggle"
-                                        data-toggle="dropdown" role="button" aria-haspopup="true"
-                                        aria-expanded="false">{{ app.user.username }}<span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'editar' | trans }}</a></li>
-                                            <li><a href="{{ path('fos_user_change_password') }}">{{ 'modificar pasword' | trans }}</a></li>
-                                            <li><a href="{{ path('fos_user_security_logout') }}">{{ 'salir' | trans }}</a></li>
+                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                <div class="dropdown form-group form-group-sm"><a href="#" class="dropdown-toggle"
+                                    data-toggle="dropdown" role="button" aria-haspopup="true"
+                                    aria-expanded="false">{{ app.user.username }}<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'editar' | trans }}</a></li>
+                                        <li><a href="{{ path('fos_user_change_password') }}">{{ 'modificar password' | trans }}</a></li>
+                                        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'salir' | trans }}</a></li>
 
-                                        </ul></div>
+                                    </ul></div>
+                                    {% else %}
+                                    <div class="form-group form-group-sm">
+                                        <input type="text" class="form-control" name="_username" placeholder="{{ 'nomUs' | trans }}">
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <input type="password" class="form-control" name="_password" placeholder="{{ 'clave' | trans }}">
+                                    </div>                    
+                                    <div class="form-group form-group-sm">
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                                        <button type="submit" class="btn btn-info"><strong>{{ 'entrar' | trans }}</strong></button>
+                                        <a type="button" href="{{  path('fos_user_registration_register') }}" class="btn btn-info"><strong>{{ 'registrarse' | trans }}</strong></a>
+                                    </div>
+                                    {% endif %}
 
-                                        {% else %}
-                                        {% endif %}
-
-
+                                    <div class="form-group form-group-sm">
                                         <ul class="nav navbar-nav navbar-right">                    
                                             <li class="dropdown">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                                 role="button" aria-haspopup="true" aria-expanded="false">
-                                                <span class="glyphicon glyphicon-flag"></span> es <span class="caret"></span></a>
+                                                <span class="glyphicon glyphicon-flag"></span> {{ app.request.locale}} <span class="caret"></span></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'es'})) }}">es</a></li>                          
                                                     <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">en</a></li>
@@ -100,7 +100,7 @@
 
                         </div>
                     </nav>
-                    <div style="padding-top:100px;">
+                    <div style="margin-top:100px; ">
                         {% block body %}{% endblock %}
                     </div>
                     {% block javascripts %}{% endblock %}
