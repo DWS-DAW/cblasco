@@ -30,13 +30,6 @@ class Position{
 	 * @ORM\JoinColumn(name="carrera_id", referencedColumnName="id", nullable=false)
 	 */
 	protected $carrera;  
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->corredor = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -51,7 +44,7 @@ class Position{
     /**
      * Set tiempo
      *
-     * @param \DateTime $tiempo
+     * @param string $tiempo
      *
      * @return Position
      */
@@ -65,7 +58,7 @@ class Position{
     /**
      * Get tiempo
      *
-     * @return \DateTime
+     * @return string
      */
     public function getTiempo()
     {
@@ -73,33 +66,23 @@ class Position{
     }
 
     /**
-     * Add corredor
+     * Set corredor
      *
-     * @param \AppBundle\Entity\Corredor $corredor
+     * @param string $corredor
      *
      * @return Position
      */
-    public function addCorredor(\AppBundle\Entity\Corredor $corredor)
+    public function setCorredor($corredor)
     {
-        $this->corredor[] = $corredor;
+        $this->corredor = $corredor;
 
         return $this;
     }
 
     /**
-     * Remove corredor
-     *
-     * @param \AppBundle\Entity\Corredor $corredor
-     */
-    public function removeCorredor(\AppBundle\Entity\Corredor $corredor)
-    {
-        $this->corredor->removeElement($corredor);
-    }
-
-    /**
      * Get corredor
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return string
      */
     public function getCorredor()
     {
@@ -128,19 +111,5 @@ class Position{
     public function getCarrera()
     {
         return $this->carrera;
-    }
-
-    /**
-     * Set corredor
-     *
-     * @param string $corredor
-     *
-     * @return Position
-     */
-    public function setCorredor($corredor)
-    {
-        $this->corredor = $corredor;
-
-        return $this;
     }
 }
