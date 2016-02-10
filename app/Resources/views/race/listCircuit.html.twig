@@ -1,0 +1,18 @@
+{% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+{% endblock %}
+{% block body %}
+<h1>{{ 'title.list.circuit' | trans }}</h1>
+<table class='table table-striped'><thead><tr><td>{{ 'nombre' | trans }}</td><td>{{ 'ncarreras' | trans }}</td>
+{% if is_granted('ROLE_ADMIN') %}<td>{{ 'borrar' | trans }}</td><td>{{ 'editar' | trans }}</td>{% endif %}
+</tr></thead>
+<tbody>{% for key, value in circuits %}
+	<tr><td>{{ value.Name }}</td><td>{{ value.Carreras }}</td>
+	{% if is_granted('ROLE_ADMIN') %}
+<td><a href='/{{ app.request.locale }}/circuit/delete/{{ value.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
+<td><a href='/{{ app.request.locale }}/circuit/edit/{{ value.id }}'><i class='fa fa-pencil fa-lg'></i></a></td>
+{% endif %}</tr>
+	{% endfor %}</tbody>
+</table>
+{% endblock %}

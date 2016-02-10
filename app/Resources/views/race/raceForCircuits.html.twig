@@ -1,0 +1,21 @@
+{% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+{% endblock %}
+{% block body %}
+<h1>{{ 'title.list.prodcat' | trans }}</h1>
+
+{% for category in categories %}
+<h3>{{ category.Name }}</h3>
+<table class='table table-striped'><thead><tr><td>{{ 'identificador' | trans }}</td><td>{{ 'nombre' | trans }}</td><td>Precio</td><td>{{ 'descripcion' | trans }}</td><td>{{ 'borrar' | trans }}</td></tr></thead>
+
+<tbody>
+{% for product in category.products %}
+	<tr><td><a href="/product/show/{{ product.Id }}">{{ product.Id }}</a></td><td>{{ product.Name }}</td><td>{{ product.Price }}</td><td>{{ product.Description }}</td>
+	<td><a href="/product/delete/{{ product.Id }}">borrar</a></td>
+	</tr>
+	
+	{% endfor %}</tbody>
+</table>
+{% endfor %}
+{% endblock %}

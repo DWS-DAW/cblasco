@@ -1,0 +1,24 @@
+{% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+{% endblock %}
+{% block body %}
+<h1>{{ 'title.list.race' | trans }}</h1>
+<table class='table table-striped'><thead><tr><td>{{ 'carrera' | trans }}</td>
+<td>{{ 'distancia' | trans }}</td><td>{{ 'localidad' | trans }}</td>
+<td>{{ 'tipo' | trans }}</td><td>{{ 'fecha' | trans }}</td><td>{{ 'precio' | trans }}</td>
+<td>{{ 'web' | trans }}</td><td>{{ 'circuito' | trans }}</td><td>{{ 'clasificacion' | trans }}</td>
+{% if is_granted('ROLE_ADMIN') %}<td>{{ 'borrar' | trans }}</td><td>{{ 'editar' | trans }}</td>{% endif %}</tr></thead>
+<tbody>{% for key, value in carreras %}
+	<tr><td>{{ value.Nombre }}</td><td>{{ value.Distancia }}</td>
+	<td>{{ value.Localidad }}</td><td>{{ value.Tipo }}</td>
+	<td>{{ value.Fecha|date('d/m/y') }}</td><td>{{ value.Precio }}</td>
+	<td>{{ value.Web }}</td><td>{{ value.Circuito.Name }}</td>
+	<td><a href="{{ value.Id }}"><i class='fa fa-eye fa-lg'></i></a></td>
+	{% if is_granted('ROLE_ADMIN') %}
+<td><a href='delete/{{ value.id }}'><i class='fa fa-trash-o fa-lg'></i></a></td>
+<td><a href='edit/{{ value.id }}'><i class='fa fa-pencil fa-lg'></i></a></td>
+{% endif %}</tr>
+	{% endfor %}</tbody>
+</table>
+{% endblock %}

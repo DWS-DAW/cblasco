@@ -1,0 +1,15 @@
+{% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+{% endblock %}
+{% block body %}
+<h1>{{ 'clasificacionde' | trans }} {{ carrera }}</h1>
+<table class='table table-striped'><thead><tr><td>{{ 'posicion' | trans }}</td><td>{{ 'identificador' | trans }}</td><td>{{ 'corredor' | trans }}</td><td>{{ 'tiempo' | trans }}</td></tr></thead>
+{% set contador=0 %}
+<tbody>{% for key, value in positions %}
+{% set contador=contador+1 %}
+	<tr><td>{{ contador }}</td><td>{{ value.Id }}</td><td>{{ value.Corredor }}</td><td>{{ value.Tiempo }}</td>
+	</tr>
+	{% endfor %}</tbody>
+</table>
+{% endblock %}

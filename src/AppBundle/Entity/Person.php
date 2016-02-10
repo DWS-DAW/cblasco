@@ -110,7 +110,6 @@ class Person{
 	 */
 	protected $IBAN;
 	
-
     /**
      * Get id
      *

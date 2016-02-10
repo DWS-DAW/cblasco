@@ -1,0 +1,14 @@
+{% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+{% endblock %}
+{% block body %}
+<h1>{{ 'title.list.forcat' | trans }} {{ circuit }}</h1>
+<table class='table table-striped'><thead><tr><td>Identificador</td><td>Nombre</td><td>Precio</td><td>Descripción</td><td>Categoria</td></tr></thead>
+<tbody>{% for carrera in carreras %}
+	<tr><td>{{ carrera.Id }}</td><td>{{ carrera.Nombre }}</td><td>{{ carrera.Precio }}</td><td>{{ product.Descripcion }}</td>
+	<td>{{ carrera.Circuito.Name }}</td>
+	</tr>
+	{% endfor %}</tbody>
+</table>
+{% endblock %}

@@ -1,5 +1,5 @@
 <?php 
-// src/AppBundle/DataFixtures/ORM/LoadProductData.php
+// src/AppBundle/DataFixtures/ORM/LoadCarreraData.php
 
 namespace AppBundle\DataFixtures\ORM;
 
@@ -9,10 +9,10 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use AppBundle\Entity\Product;
-use AppBundle\Entity\Category;
+use AppBundle\Entity\Circuit;
+use AppBundle\Entity\Carrera;
 
-class LoadProductData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadCarreraData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
 	
 	private $container;
@@ -29,32 +29,37 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
 
 		
 		$symfony_app_base_dir = $this->container->getParameter('kernel.root_dir');
-		$fd = fopen('app/Resources/data/products.csv', "r");
+		$fd = fopen('app/Resources/data/carreras.csv', "r");
 		$row = 0;
 		if ($fd) {
 			while (($data = fgetcsv($fd)) !== false) {
             $row++;
             if ($row == 1) continue; //skip header
-				//$category = $this->getDoctrine()->getRepository ( 'AppBundle:Category' )->findByName ($data[3]);
-				$product = new Product();
-				$product->setName($data[0]);
-				$product->setDescription($data[1]);
-				$product->setCategory($this->getReference('categoria'));
-				$product->setPrice($data[3]);
-				$manager->persist($product);
+				$carrera = new Carrera();	
+				$carrera->setNombre($data[0]);
+				$carrera->setDistancia($data[1]);
+				$carrera->setLocalidad($data[2]);
+				$carrera->setTipo($data[3]);
+				$carrera->setFecha($data[4]);
+				$carrera->setPrecio($data[5]);
+				$carrera->setWeb($data[6]);
+				$carrera->setDescripcion($data[7]);
+				$carrera->setCircuito($this->getReference('circuit'));
+				$manager->persist($carrera);
 			
+//$category = $this->getDoctrine ()->getRepository ( 'AppBundle:Category' )->find ( 1 );
 		
 			}
 
-
 		$manager->flush();
-			fclose($fd);
-		}
+		$this->addReference('carrera', $carrera);
+		fclose($fd);
+		}	
     } 
     public function getOrder()
     {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 2;
+        return 4;
     }
 } 

@@ -46,6 +46,10 @@ title:
             'Product list of category '
         prodcat:
             'Listado de todos los productos ordenados por categorias'
+        circuit:
+            'Circuit list'
+        race:
+            'Race list'
 detalles:
         'Details'
 email:
@@ -87,4 +91,45 @@ categoria:
 inicio:
         'Home'
 identificador:
-        'identificator'
+        'Identificator'
+carrera:
+        'Race'
+distancia:
+        'Distance'
+localidad:
+        'City'
+tipo:
+        'Tipe'
+fecha:
+        'Date'
+precio:
+        'Price'
+web:
+        'Web'
+circuito:
+        'Circuit'
+ncarreras:
+        'Number of races'
+clasificacion:
+        'Clasification'
+clasificacionde:
+        'Clasification of'
+add:
+    position:
+        'Position add'
+    circuit:
+        'Circuit add'
+    race:
+        'Race add'
+races:
+        'Races'
+circuits:
+        'Circuits'
+corredor:
+        'Runner'
+tiempo:
+        'Time'
+posicion:
+        'Position'
+practicas:
+        'Practices'

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}{% endblock %}</title>
+    <title></title>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
@@ -23,28 +23,34 @@
                     
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">{{ 'productos' | trans }}<span class="caret"></span></a>
+                        aria-expanded="false">{{ 'practicas' | trans }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('productNew') }}">{{ 'agregarprod' | trans }}</a></li>
                             <li><a href="{{ path('productList') }}">{{ 'list' | trans }}</a></li>
-                            
+                            <li><a href="{{ path('Categoria_nueva') }}">{{ 'agregarcat' | trans }}</a></li>
+                            <li><a href="{{ path('categoryList') }}">{{ 'list' | trans }}</a></li>
+                            <li><a href="{{ path('personNew') }}">{{ 'agregarpers' | trans }}</a></li>
+                            <li><a href="{{ path('personList') }}">{{ 'list' | trans }}</a></li>
+                                
                         </ul></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false">{{ 'categorias' | trans }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ path('Categoria_nueva') }}">{{ 'agregarcat' | trans }}</a></li>
-                                <li><a href="{{ path('categoryList') }}">{{ 'list' | trans }}</a></li>
-
-                            </ul></li>
-                            <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                
+                                <li class="dropdown"><a href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">{{ 'personas' | trans }} <span class="caret"></span></a>
+                                aria-expanded="false">{{ 'races' | trans }} <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ path('personNew') }}">{{ 'agregarpers' | trans }}</a></li>
-                                    <li><a href="{{ path('personList') }}">{{ 'list' | trans }}</a></li>
+                                    <li><a href="{{ path('carreraNew') }}">{{ 'add.race' | trans }}</a></li>
+                                    <li><a href="{{ path('carreraList') }}">{{ 'list' | trans }}</a></li>
 
                                 </ul></li>
+                                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false">{{ 'circuits' | trans }} <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('circuitNew') }}">{{ 'add.circuit' | trans }}</a></li>
+                                    <li><a href="{{ path('circuitList') }}">{{ 'list' | trans }}</a></li>
+
+                                </ul></li>
+                                    <li><a href="{{ path('positionNew') }}">{{ 'add.position' | trans }}</a></li>
                             </ul>
                         </div>
                         <div class="navbar-header">

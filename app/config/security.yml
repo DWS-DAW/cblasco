@@ -74,3 +74,14 @@ security:
         - { path: ^/[a-z]+/category/delete, roles: ROLE_ADMIN }
         - { path: ^/[a-z]+/person/edit, roles: ROLE_ADMIN }
         - { path: ^/[a-z]+/person/delete, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/race/new, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/race/list, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/circuit/new, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/circuit/list, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/position/new, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/race/position, roles: [ROLE_USER] }
+        - { path: ^/[a-z]+/race/edit, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/race/delete, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/circuit/edit, roles: ROLE_ADMIN }
+        - { path: ^/[a-z]+/circuit/delete, roles: ROLE_ADMIN }
+

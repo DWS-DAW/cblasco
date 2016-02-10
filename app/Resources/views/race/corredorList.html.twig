@@ -1,0 +1,15 @@
+{% extends 'heroku.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block stylesheets %}<link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+{% endblock %}
+{% block body %}
+<h1>{{ 'title.list.pers' | trans }}</h1>
+<table class='table table-striped'><tr><td>{{ 'id' | trans }}</td><td>Id</td><td>{{ 'nombre' | trans }}</td><td>{{ 'edad' | trans }}</td>
+<tbody>{% for corredor in corredores %}
+	<tr><td><a href=''>{{ 'ver' | trans }}</a></td>
+	<td>{{ corredor.Id }}</td><td>{{ corredor.Name }}</td><td>{{ corredor.Age }}</td>
+	<td>{{ person.Phone }}</td>
+	</tr>
+	{% endfor %}</tbody>
+</table>
+{% endblock %}
