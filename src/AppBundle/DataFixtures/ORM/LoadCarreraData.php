@@ -29,7 +29,7 @@ class LoadCarreraData extends AbstractFixture implements OrderedFixtureInterface
 
 		
 		$symfony_app_base_dir = $this->container->getParameter('kernel.root_dir');
-		$fd = fopen('app/Resources/data/carreras.csv', "r");
+		$fd = fopen($symfony_app_base_dir . '/Resources/data/carreras.csv', "r");
 		$row = 0;
 		if ($fd) {
 			while (($data = fgetcsv($fd)) !== false) {
@@ -44,15 +44,12 @@ class LoadCarreraData extends AbstractFixture implements OrderedFixtureInterface
 				$carrera->setPrecio($data[5]);
 				$carrera->setWeb($data[6]);
 				$carrera->setDescripcion($data[7]);
-				$carrera->setCircuito($this->getReference('circuit'));
-				$manager->persist($carrera);
-			
-//$category = $this->getDoctrine ()->getRepository ( 'AppBundle:Category' )->find ( 1 );
-		
+				$carrera->setCircuito($this->getReference($data[8]));
+				$this->addReference($data[0], $carrera);
+				$manager->persist($carrera);		
 			}
 
-		$manager->flush();
-		$this->addReference('carrera', $carrera);
+		$manager->flush();		
 		fclose($fd);
 		}	
     } 

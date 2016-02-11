@@ -28,7 +28,7 @@ class LoadCircuitData extends AbstractFixture implements OrderedFixtureInterface
 
 		
 		$symfony_app_base_dir = $this->container->getParameter('kernel.root_dir');
-		$fd = fopen('app/Resources/data/circuits.csv', "r");
+		$fd = fopen($symfony_app_base_dir . '/Resources/data/circuits.csv', "r");
 		$row = 0;
 		if ($fd) {
 			while (($data = fgetcsv($fd)) !== false) {
@@ -37,15 +37,13 @@ class LoadCircuitData extends AbstractFixture implements OrderedFixtureInterface
 				$circuit = new Circuit();	
 				$circuit->setName($data[0]);
 				$circuit->setCarreras($data[1]);
-				$manager->persist($circuit);
-			
-//$category = $this->getDoctrine ()->getRepository ( 'AppBundle:Category' )->find ( 1 );
-		
+				$this->addReference($data[0], $circuit);
+				$manager->persist($circuit);		
 			}
 
 
 		$manager->flush();
-		$this->addReference('circuit', $circuit);
+		
 		fclose($fd);
 		}
     } 

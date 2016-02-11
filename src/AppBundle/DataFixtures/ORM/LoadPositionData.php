@@ -29,7 +29,7 @@ class LoadPositionData extends AbstractFixture implements OrderedFixtureInterfac
 
 		
 		$symfony_app_base_dir = $this->container->getParameter('kernel.root_dir');
-		$fd = fopen('app/Resources/data/positions.csv', "r");
+		$fd = fopen($symfony_app_base_dir . '/Resources/data/positions.csv', "r");
 		$row = 0;
 		if ($fd) {
 			while (($data = fgetcsv($fd)) !== false) {
@@ -38,11 +38,8 @@ class LoadPositionData extends AbstractFixture implements OrderedFixtureInterfac
 				$position = new Position();	
 				$position->setTiempo($data[0]);
 				$position->setCorredor($data[1]);
-				$position->setCarrera($this->getReference('carrera'));
-				$manager->persist($position);
-			
-//$category = $this->getDoctrine ()->getRepository ( 'AppBundle:Category' )->find ( 1 );
-		
+				$position->setCarrera($this->getReference($data[2]));
+				$manager->persist($position);		
 			}
 
 
